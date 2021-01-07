@@ -19,3 +19,13 @@ if(!db)
 else
     console.log("Conection good");
 
+app.get('/', (req, res)=>res.send("HEllo from ALbert"));
+
+// Configure bodyparser to handle post requests
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+app.use('/api', data);
+
+
+app.listen(PORT, ()=> console.log(`Server running on port: http://localhost:${PORT}`))
