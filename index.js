@@ -9,3 +9,13 @@ var contactController = require('./controller/controller');
 const app = express(); //initilaize the project
 const PORT = 5000;  //specify the portb to use
 
+
+mongoose.connect('mongodb://localhost/covidData', {useNewUrlParser: true})
+
+var db = mongoose.connection;
+
+if(!db)
+    console.log(err);
+else
+    console.log("Conection good");
+
