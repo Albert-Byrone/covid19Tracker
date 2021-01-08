@@ -5,12 +5,13 @@ const data = require('./router/data.js');
 const mongoose = require('mongoose');
 const model = require('./model/coviddata.js');
 var contactController = require('./controller/controller');
+const cases = require('./router/data')
 
 const app = express(); //initilaize the project
 const PORT = 5000;  //specify the portb to use
 
 
-mongoose.connect('mongodb://localhost/covidData', {useNewUrlParser: true})
+mongoose.connect('mongodb://localhost/covidData', {useNewUrlParser: true, useUnifiedTopology: true})
 
 var db = mongoose.connection;
 
@@ -26,6 +27,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use('/api', data);
+// Cases controller was not added
+app.use('/api/cases/', cases)
 
 
 app.listen(PORT, ()=> console.log(`Server running on port: http://localhost:${PORT}`))
